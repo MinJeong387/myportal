@@ -11,7 +11,7 @@
 	<properties>
 		<org.springframework-version>6.1.16</org.springframework-version>
 	</properties>
-	
+
 	<!-- 컴파일 및 빌드 정보-->
 	<build>
 		<plugins>
@@ -52,6 +52,23 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+
+		<!--
+		https://mvnrepository.com/artifact/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api -->
+		<dependency>
+			<groupId>jakarta.servlet.jsp.jstl</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+			<version>3.0.2</version>
+		</dependency>
+		
+		<!--
+		https://mvnrepository.com/artifact/org.glassfish.web/jakarta.servlet.jsp.jstl -->
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+
 
 	</dependencies>
 </project>
