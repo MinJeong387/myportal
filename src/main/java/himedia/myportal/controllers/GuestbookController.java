@@ -33,7 +33,6 @@ public class GuestbookController {
 		boolean success = guestbookServiceImpl.writeMessage(vo);
 		System.out.println("Write Result:" + success);
 		return "redirect:/guestbook";
-
 	}
 
 }
