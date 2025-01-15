@@ -1,5 +1,6 @@
 package himedia.myportal.repositories;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
