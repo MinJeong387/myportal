@@ -28,8 +28,8 @@ public class GuestbookServiceImpl implements GuestbookService {
 
 	@Override
 	public boolean deleteMessage(GuestbookVo vo) {
-		// TODO Auto-generated method stub
-		return false;
+		int deletedCount = guestbookDaoImpl.delete(vo);
+		return 1 == deletedCount;
 	}
 
 }

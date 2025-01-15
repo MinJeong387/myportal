@@ -35,8 +35,13 @@ public class GuestbookDaoImpl implements GuestbookDao {
 
 	@Override
 	public int delete(GuestbookVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		int deletedCount = 0;
+		try {
+			deletedCount = sqlSession.delete("guestbook.delete", vo);
+		} catch (Exception e) {
+			throw new GuestbookDaoException("방명록 삭제중 에러 발생", vo);
+		}
+		return deletedCount;
 	}
 
 }
