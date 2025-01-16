@@ -3,21 +3,27 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user">
 	<insert id="insert" parameterType="userVo">
-	INSERT INTO users 
+		INSERT INTO users
 		(name, password, email, gender)
-	VALUES(
+		VALUES(
 		#{name}, #{password}, #{email}, #{gender}
-	)
+		)
 	</insert>
-	
-	<select id="selectUserByEmailAndPassword"
-		parameterType="map"
+
+	<select id="selectUserByEmailAndPassword" parameterType="map"
 		resultType="userVo">
-	SELECT no, 
+		SELECT no,
 		name, email, gender
-	FROM users
-	WHERE
-		email=#{email} AND password=#{password}	
-	
+		FROM users
+		WHERE
+		email=#{email} AND password=#{password}
 	</select>
+
+	<select id="selectUserByEmail" parameterType="string"
+		resultType="userVo">
+		SELECT no, name, email, gender
+		FROM users
+		WHERE email=#{value}
+	</select>
+
 </mapper>
