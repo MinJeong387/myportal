@@ -77,7 +77,7 @@ public class UsersController {
 			return "redirect:/users/login";
 		}
 	}
-	
+	/*
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("authUser");
@@ -85,6 +85,8 @@ public class UsersController {
 		
 		return "redirect:/";
 	}
+	-> 로그아웃 인터셉터로 위임
+	*/
 	
 	@ResponseBody
 	@GetMapping("/checkEmail")
