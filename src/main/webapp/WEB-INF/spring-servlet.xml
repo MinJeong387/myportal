@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Spring 6 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="
            http://www.springframework.org/schema/beans 
            http://www.springframework.org/schema/beans/spring-beans.xsd
            http://www.springframework.org/schema/context 
@@ -17,32 +17,31 @@
            http://www.springframework.org/schema/aop/spring-aop.xsd">
 	<!-- 어노테이션 기능 활성화 -->
 	<context:annotation-config />
-	<context:component-scan
-		base-package="himedia.myportal.controllers">
+	<context:component-scan base-package="himedia.myportal.controllers">
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 		<!-- 특정 필터를 제외하고 등록할 경우 -->
-		<!-- context:exclude-filter type="regex" expression=".*" / -->
+		<!-- context:exclude-filter type="regex" expression=".*" /-->
 	</context:component-scan>
-
+	
 	<!-- 어노테이션 기반 Spring MVC 설정을 활성화 -->
 	<mvc:annotation-driven>
 		<!-- MessageConverter 등록 -->
 		<mvc:message-converters>
-			<bean
-				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 				<property name="supportedMediaTypes">
 					<list>
 						<!-- Map 타입을 JSON으로 변환해주는 Converter -->
-						<value>application/json; charset=UTF-8</value>
+						<value>application/json;charset=UTF-8</value>
 					</list>
 				</property>
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
+	
 	<!-- 정적 자원 처리를 위한 디폴트 서블릿 핸들러 위임 -->
 	<mvc:default-servlet-handler />
-
+	
 	<!-- ViewResolver 설정 -->
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -52,7 +51,7 @@
 		<property name="suffix" value=".jsp" />
 		<property name="order" value="1" />
 	</bean>
-
+		
 	<!-- Interceptors -->
 	<mvc:interceptors>
 		<!-- mvc:interceptor>
@@ -63,7 +62,6 @@
 			<mvc:mapping path="/board/**" />
 			<bean class="himedia.myportal.interceptors.MyInterceptor2" />
 		</mvc:interceptor -->
-		
 		<mvc:interceptor>
 		<!-- Board 서비스에는 기본적으로 로그인이 필요 -->
 		<!-- board/list는 모든 사용자가 열람할 수 있도록 -->
@@ -73,23 +71,19 @@
 			<mvc:exclude-mapping path="/board/list" />
 			<bean class="himedia.myportal.interceptors.AuthInterceptor" />
 		</mvc:interceptor>
-		
 		<!-- 로그아웃 인터셉터 -->
 		<mvc:interceptor>
 			<mvc:mapping path="/users/logout" />
 			<bean class="himedia.myportal.interceptors.LogoutInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
-	
+		
 	<!-- MultipartResolver -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
-	
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
+		
 	<!-- Resource Mapping -->
-	<mvc:resources mapping="/upload-images/**" location="file:c:/uploads/" />
-
-
-
-
-
-
+	<mvc:resources mapping="/upload-images/**"
+		location="file:c:/uploads/" />
+		
 </beans>
